@@ -2188,9 +2188,13 @@ kbd {
   background: #3e444f;
   border: 1px solid #474e5a;
   border-radius: 8px;
+  box-sizing: border-box;
   color: #dceaf5;
   margin-top: 1px;
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
+  width: 100%;
 }
 
 .standard-section .code-card:has(.language-options),
@@ -2222,9 +2226,13 @@ kbd {
 }
 
 pre {
+  box-sizing: border-box;
   margin: 0;
+  max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   padding: 8px 0 10px;
+  width: 100%;
 }
 
 pre code {
@@ -2238,6 +2246,9 @@ pre code {
 .example-stack {
   display: grid;
   gap: 16px;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
 }
 
 .resource-operation .example-stack:has(.response-card) {
