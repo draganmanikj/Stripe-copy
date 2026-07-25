@@ -12,7 +12,7 @@
 
 # testing
 /coverage
-
+/.tmp-codex
 # next.js
 /.next/
 /.vinext/
@@ -36,6 +36,7 @@ yarn-error.log*
 
 # typescript
 next-env.d.ts
+*.tsbuildinfo
 /dist/
 /.output/
 /.wrangler/

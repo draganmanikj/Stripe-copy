@@ -20,6 +20,9 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | API Reference",
     },
     description: "A clear, searchable reference for building with the API.",
+    icons: {
+      icon: "/favicon.svg",
+    },
     openGraph: {
       title: "API Reference",
       description: "React · Vite · TypeScript · Markdoc",
