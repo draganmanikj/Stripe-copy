@@ -690,8 +690,20 @@ function CodeBlock({
   language?: string;
   showLineNumbers?: boolean;
 }) {
+  const preRef = useRef<HTMLPreElement>(null);
+
+  useEffect(() => {
+    if (!preRef.current) return;
+    preRef.current.scrollLeft = 0;
+    preRef.current.scrollTop = 0;
+  }, [language, value]);
+
   return (
-    <pre className={showLineNumbers ? "" : "without-line-numbers"} data-language={language}>
+    <pre
+      className={showLineNumbers ? "" : "without-line-numbers"}
+      data-language={language}
+      ref={preRef}
+    >
       <code>
         {value.split("\n").map((line, index) => {
           return (

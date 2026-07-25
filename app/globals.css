@@ -626,7 +626,13 @@ kbd {
 }
 
 .examples {
+  align-self: start;
   min-width: 0;
+}
+
+.standard-section > .examples {
+  position: sticky;
+  top: calc(var(--header-height) + 28px);
 }
 
 .intro-section .examples {
@@ -2948,6 +2954,7 @@ pre code {
 
   .examples {
     margin-top: 50px;
+    position: static;
   }
 }
 
