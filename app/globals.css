@@ -256,6 +256,7 @@ kbd {
 }
 
 .category-nav svg {
+  color: #50617a;
   height: 12px;
   transition: transform 140ms ease;
   width: 12px;
@@ -316,10 +317,10 @@ kbd {
 }
 
 .category-items button small {
-  color: #75889c;
-  font-size: 10px;
-  font-weight: 500;
-  margin-left: 7px;
+  color: #50617a;
+  font-size: 14px;
+  font-weight: 200;
+  margin-left: 4px;
 }
 
 .resource-nav-group {
@@ -718,6 +719,11 @@ kbd {
   width: 12px;
 }
 
+.section-actions > button:first-child svg {
+  height: 12px;
+  width: 12px;
+}
+
 .section-actions button:last-child {
   gap: 4px;
 }
@@ -728,17 +734,11 @@ kbd {
 }
 
 .markdown-action-icon {
-  align-items: center;
-  border: 1px solid currentColor;
-  border-radius: 1px;
-  display: inline-flex;
-  font-size: 7px;
-  font-weight: 750;
-  height: 11px;
-  justify-content: center;
-  letter-spacing: -0.8px;
-  line-height: 1;
-  width: 17px;
+  display: block;
+  fill: currentColor;
+  flex: 0 0 16px;
+  height: 16px;
+  width: 16px;
 }
 
 .intro-prompt h2 {
@@ -763,9 +763,9 @@ kbd {
 }
 
 .base-url-card {
-  background: #3c424d;
-  border: 1px solid #cbd7e5;
-  border-radius: 9px;
+  background: #3e444f;
+  border: 1px solid #474e5a;
+  border-radius: 8px;
   color: #ffffff;
   height: 69.1875px;
   margin-top: 16px;
@@ -774,7 +774,7 @@ kbd {
 
 .base-url-header {
   align-items: center;
-  background: #596273;
+  background: #505865;
   display: flex;
   height: 33px;
   justify-content: space-between;
@@ -791,12 +791,12 @@ kbd {
 .base-url-header > div {
   align-items: center;
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .base-url-header > div > svg {
-  height: 18px;
-  width: 18px;
+  height: 15px;
+  width: 15px;
 }
 
 .base-url-card > code {
@@ -826,14 +826,14 @@ kbd {
 }
 
 .copy-button.compact {
-  height: 16px;
+  height: 14px;
   padding: 0;
-  width: 16px;
+  width: 14px;
 }
 
 .copy-button.compact svg {
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
 }
 
 .copy-button svg {
@@ -2231,15 +2231,17 @@ kbd {
   border-bottom: 1px solid #474e5a;
   color: #ffffff;
   display: flex;
-  font-size: 11px;
-  font-weight: 650;
+  font-size: 12px;
+  font-weight: 600;
   justify-content: space-between;
-  letter-spacing: 0.55px;
+  letter-spacing: 0;
   min-height: 41px;
-  padding: 0 11px 0 12px;
+  padding: 0;
 }
 
 .code-card-header > span {
+  line-height: 16px;
+  padding: 8px 12px;
   text-transform: uppercase;
 }
 
@@ -2302,15 +2304,19 @@ pre code {
 }
 
 .code-string {
-  color: #59d13c;
+  color: #4bca2e;
 }
 
 .code-keyword {
-  color: #43a9db;
+  color: #4abcf9;
 }
 
 .code-key {
   color: inherit;
+}
+
+.code-punctuation {
+  color: #c9ced8;
 }
 
 .code-literal {
@@ -2322,13 +2328,15 @@ pre code {
 }
 
 .code-comment {
-  color: #c3c9d2;
+  color: #c9ced8;
 }
 
 .code-card-controls {
   align-items: center;
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  min-height: 40px;
+  padding: 8px 12px;
 }
 
 .code-card-controls > svg {
@@ -2344,11 +2352,11 @@ pre code {
   color: inherit;
   cursor: pointer;
   display: inline-flex;
-  height: 24px;
+  height: 15px;
   justify-content: center;
   padding: 0;
   transition: background-color 120ms ease, color 120ms ease, transform 120ms ease;
-  width: 20px;
+  width: 12px;
 }
 
 .code-control-button:hover {
@@ -2364,8 +2372,8 @@ pre code {
 }
 
 .code-control-button svg {
-  height: 16px;
-  width: 16px;
+  height: 15px;
+  width: 15px;
 }
 
 .language-menu {

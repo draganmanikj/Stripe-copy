@@ -7,17 +7,14 @@ import {
   FiCheck,
   FiChevronDown,
   FiChevronRight,
-  FiClipboard,
   FiFileText,
   FiGithub,
   FiHelpCircle,
   FiMenu,
   FiMessageSquare,
   FiPlay,
-  FiSearch,
   FiX,
 } from "react-icons/fi";
-import { HiOutlineSparkles } from "react-icons/hi2";
 import {
   resourceDefinitions,
   resourcesByCategory,
@@ -320,7 +317,7 @@ const sections: Section[] = [
     id: "request-ids",
     copyKey: "requestIds",
     label: "Request IDs",
-    codeTitle: "REQUEST",
+    codeTitle: "",
     code: `curl https://api.stripe.com/v1/customers \\
   -u YOUR_STRIPE_SECRET_KEY: \\
   -D "-" \\
@@ -440,6 +437,103 @@ function InlineMarkdown({ value }: { value: string }) {
   );
 }
 
+function StripeSearchIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 12 12">
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.883 9.085a5 5 0 1 1 1.202-1.202l2.666 2.666a.847.847 0 0 1 0 1.202.847.847 0 0 1-1.202 0L7.883 9.085ZM8.3 5a3.3 3.3 0 1 1-6.6 0 3.3 3.3 0 0 1 6.6 0Z"
+      />
+    </svg>
+  );
+}
+
+function StripeCopyIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 12 12">
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M4 6.375c0-.345.28-.625.625-.625h2.75a.625.625 0 1 1 0 1.25h-2.75A.625.625 0 0 1 4 6.375Zm0 2.25C4 8.28 4.28 8 4.625 8h2.75a.625.625 0 1 1 0 1.25h-2.75A.625.625 0 0 1 4 8.625Z"
+      />
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.437 1.5A2 2 0 0 0 6.5 0h-1a2 2 0 0 0-1.937 1.5H3a2 2 0 0 0-2 2V10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-.563ZM4.9 3.1h2.2V2a.6.6 0 0 0-.6-.6h-1a.6.6 0 0 0-.6.6v1.1ZM8 4.5H4a.5.5 0 0 1-.5-.5V2.9H3a.6.6 0 0 0-.6.6V10a.6.6 0 0 0 .6.6h6a.6.6 0 0 0 .6-.6V3.5a.6.6 0 0 0-.6-.6h-.5V4a.5.5 0 0 1-.5.5Z"
+      />
+    </svg>
+  );
+}
+
+function StripeSparklesIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 16 16">
+      <path
+        fill="currentColor"
+        d="M11.472 2.624a.25.25 0 0 0 .152-.152l.64-1.807A.246.246 0 0 1 12.5.499c.098 0 .196.055.236.166l.64 1.807a.25.25 0 0 0 .152.152l1.807.64c.111.04.166.138.166.236a.246.246 0 0 1-.166.236l-1.807.64a.25.25 0 0 0-.152.152l-.64 1.807a.246.246 0 0 1-.236.166.246.246 0 0 1-.236-.166l-.64-1.807a.25.25 0 0 0-.152-.152l-1.807-.64A.246.246 0 0 1 9.5 3.5c0-.098.055-.196.166-.236l1.807-.64Z"
+      />
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="m7 5.491-.56 1.58a2.25 2.25 0 0 1-1.37 1.37L3.492 9l1.58.56a2.25 2.25 0 0 1 1.37 1.37L7 12.508l.56-1.58a2.25 2.25 0 0 1 1.37-1.37L10.508 9l-1.58-.56a2.25 2.25 0 0 1-1.37-1.37L7 5.492Zm.707-2.496a.737.737 0 0 0-.707-.5.737.737 0 0 0-.707.5L5.026 6.57a.75.75 0 0 1-.456.456L.995 8.293a.737.737 0 0 0-.5.707c0 .294.167.589.5.707l3.575 1.267a.75.75 0 0 1 .456.456l1.267 3.575c.118.333.413.5.707.5a.737.737 0 0 0 .707-.5l1.267-3.575a.75.75 0 0 1 .456-.456l3.575-1.267a.737.737 0 0 0 .5-.707.737.737 0 0 0-.5-.707L9.43 7.026a.75.75 0 0 1-.456-.456L7.707 2.995Z"
+      />
+    </svg>
+  );
+}
+
+function StripeLanguageChevronIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 12 12">
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M1.926 7.243a.8.8 0 0 1 1.131-.017L6 10.085l2.943-2.859a.8.8 0 0 1 1.114 1.148l-3.5 3.4a.798.798 0 0 1-1.114 0l-3.5-3.4a.8.8 0 0 1-.017-1.131ZM5.443.226a.798.798 0 0 1 1.114 0l3.5 3.4a.8.8 0 0 1-1.114 1.148L6 1.915 3.057 4.774a.8.8 0 1 1-1.114-1.148l3.5-3.4Z"
+      />
+    </svg>
+  );
+}
+
+function StripeSidebarChevronIcon({ expanded = false }: { expanded?: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 12 12"
+      width="12"
+      height="12"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d={
+          expanded
+            ? "M.381 3.381a.875.875 0 0 1 1.238 0L6 7.763l4.381-4.382A.875.875 0 1 1 11.62 4.62l-5 5a.875.875 0 0 1-1.238 0l-5-5a.875.875 0 0 1 0-1.238Z"
+            : "M3.381.381a.875.875 0 0 1 1.238 0l5 5a.875.875 0 0 1 0 1.238l-5 5A.875.875 0 0 1 3.38 10.38L7.763 6 3.38 1.619a.875.875 0 0 1 0-1.238Z"
+        }
+      />
+    </svg>
+  );
+}
+
+function StripeMarkdownIcon() {
+  return (
+    <svg aria-hidden="true" className="markdown-action-icon" viewBox="0 0 208 128">
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M15 10a5 5 0 0 0-5 5v98a5 5 0 0 0 5 5h178a5 5 0 0 0 5-5V15a5 5 0 0 0-5-5ZM0 15C0 6.716 6.716 0 15 0h178c8.284 0 15 6.716 15 15v98c0 8.284-6.716 15-15 15H15c-8.284 0-15-6.716-15-15V15Z"
+      />
+      <path fill="currentColor" d="M30 98V30h20l20 25 20-25h20v68H90V59L70 84 50 59v39H30Zm125 0-30-33h20V30h20v35h20l-30 33Z" />
+    </svg>
+  );
+}
+
 function CopyButton({ value, compact = false }: { value: string; compact?: boolean }) {
   const [copied, setCopied] = useState(false);
 
@@ -460,7 +554,7 @@ function CopyButton({ value, compact = false }: { value: string; compact?: boole
       type="button"
       onClick={copy}
     >
-      {copied ? <FiCheck aria-hidden="true" /> : <FiClipboard aria-hidden="true" />}
+      {copied ? <FiCheck aria-hidden="true" /> : <StripeCopyIcon />}
       <span>{copied ? "Copied" : "Copy"}</span>
     </button>
   );
@@ -481,7 +575,7 @@ function CopyForLlmButton({ value }: { value: string }) {
 
   return (
     <button className={copied ? "copied" : ""} type="button" onClick={copy} aria-label="Copy section content for LLM">
-      <FiClipboard aria-hidden="true" />
+      <StripeCopyIcon />
       <span>{copied ? "Copied" : "Copy for LLM"}</span>
     </button>
   );
@@ -498,7 +592,7 @@ function SectionActions({
 }) {
   return (
     <div className="section-actions">
-      <button type="button" onClick={onAsk}><HiOutlineSparkles /> Ask about this section</button>
+      <button type="button" onClick={onAsk}><StripeSparklesIcon /> Ask about this section</button>
       <span />
       <CopyForLlmButton value={copyValue} />
       <span />
@@ -514,7 +608,7 @@ function SectionActions({
           window.setTimeout(() => URL.revokeObjectURL(markdown), 1000);
         }}
       >
-        <span className="markdown-action-icon" aria-hidden="true">M↔</span>
+        <StripeMarkdownIcon />
         View as Markdown
       </button>
     </div>
@@ -562,7 +656,7 @@ function LanguageSelector({
         type="button"
         onClick={() => setOpen((value) => !value)}
       >
-        {language} <FiChevronDown aria-hidden="true" />
+        {language} <StripeLanguageChevronIcon />
       </button>
       {open && (
         <div className="language-options" role="listbox" aria-label="Code language">
@@ -626,7 +720,7 @@ function FlavorSelector({
         type="button"
         onClick={() => setOpen((current) => !current)}
       >
-        {value} <FiChevronDown aria-hidden="true" />
+        {value} <StripeLanguageChevronIcon />
       </button>
       {open && (
         <div className="language-options flavor-options" role="listbox" aria-label="SDK configuration">
@@ -657,7 +751,7 @@ function highlightedLine(line: string) {
   }
 
   const parts = line.split(
-    /("[^"]*"|'[^']*'|`[^`]*`|\b(?:from|import|new|var|const|let|await|async|return|public|private|class|try|catch|except|begin|rescue|end)\b|\b(?:true|false|null)\b|-?\b\d+(?:\.\d+)?\b)/g,
+    /("[^"]*"|'[^']*'|`[^`]*`|\b(?:from|import|require|new|var|const|let|await|async|return|public|private|class|try|catch|except|begin|rescue|end)\b|(?<![=!<>])=(?![=>])|\b(?:true|false|null)\b|-?\b\d+(?:\.\d+)?\b)/g,
   );
   return parts.map((part, index) => {
       if (
@@ -666,9 +760,16 @@ function highlightedLine(line: string) {
         (part.startsWith("`") && part.endsWith("`"))
       ) {
         const isKey = parts[index + 1]?.trimStart().startsWith(":");
-        return <span className={isKey ? "code-key" : "code-string"} key={`${index}-${part}`}>{part}</span>;
+        const quote = part[0];
+        return (
+          <span key={`${index}-${part}`}>
+            <span className="code-punctuation">{quote}</span>
+            <span className={isKey ? "code-key" : "code-string"}>{part.slice(1, -1)}</span>
+            <span className="code-punctuation">{quote}</span>
+          </span>
+        );
       }
-      if (/^(from|import|new|var|const|let|await|async|return|public|private|class|try|catch|except|begin|rescue|end)$/.test(part)) {
+      if (/^(from|import|require|new|var|const|let|await|async|return|public|private|class|try|catch|except|begin|rescue|end|=)$/.test(part)) {
         return <span className="code-keyword" key={`${index}-${part}`}>{part}</span>;
       }
       if (/^(true|false|null)$/.test(part)) {
@@ -996,7 +1097,7 @@ function OfficialSectionExamples({
           key={`${example.title}-${index}`}
         >
           <div className="code-card-header">
-            <span>{example.title || section.codeTitle || "REQUEST"}</span>
+            <span>{example.title || section.codeTitle || ""}</span>
             <div className="code-card-controls">
               <LanguageSelector value={language} onChange={onLanguageChange} />
               <CopyButton value={code} compact />
@@ -1006,7 +1107,7 @@ function OfficialSectionExamples({
                 type="button"
                 onClick={onAsk}
               >
-                <HiOutlineSparkles aria-hidden="true" />
+                <StripeSparklesIcon />
               </button>
             </div>
           </div>
@@ -1092,7 +1193,7 @@ function OperationExampleStack({
               type="button"
               onClick={onAsk}
             >
-              <HiOutlineSparkles aria-hidden="true" />
+              <StripeSparklesIcon />
             </button>
             <button
               aria-label={ran ? "Request example checked" : "Run request example"}
@@ -1953,7 +2054,10 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
   const [menuOpen, setMenuOpen] = useState(false);
   const [versionMenuOpen, setVersionMenuOpen] = useState(false);
   const [apiMenuOpen, setApiMenuOpen] = useState(false);
-  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});
+  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({
+    core: true,
+    payments: true,
+  });
   const [selectedResourceId, setSelectedResourceId] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState<CodeLanguage>("cURL");
   const selectedResource = resourceDefinitions.find((item) => item.id === selectedResourceId) ?? null;
@@ -2107,12 +2211,12 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
 
         <div className="sidebar-tools">
           <button className="find-trigger" type="button" onClick={() => setSearchOpen(true)}>
-            <FiSearch aria-hidden="true" />
+            <StripeSearchIcon />
             <span>Find anything</span>
             <kbd>/</kbd>
           </button>
           <button className="ask-trigger" type="button" onClick={() => setAssistantOpen(true)}>
-            <HiOutlineSparkles aria-hidden="true" />
+            <StripeSparklesIcon />
             <span>Ask AI</span>
           </button>
         </div>
@@ -2201,7 +2305,7 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
                   onClick={() => toggleCategory(category)}
                 >
                   <span>{label}</span>
-                  <FiChevronRight className={openCategories[category] ? "expanded" : ""} aria-hidden="true" />
+                  <StripeSidebarChevronIcon expanded={Boolean(openCategories[category])} />
                 </button>
                 <div className={`category-items-shell ${openCategories[category] ? "open" : ""}`}>
                   <div className="category-items">
@@ -2375,7 +2479,7 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
                   <div className="base-url-card">
                     <div className="base-url-header">
                       <strong>BASE URL</strong>
-                      <div><CopyButton value="https://api.stripe.com" compact /><HiOutlineSparkles /></div>
+                      <div><CopyButton value="https://api.stripe.com" compact /><StripeSparklesIcon /></div>
                     </div>
                     <code>https://api.stripe.com</code>
                   </div>
@@ -2457,7 +2561,7 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
             <a href="#connected-accounts"><FiMessageSquare aria-hidden="true" /><span>Chat with Stripe developers on <b>Discord.</b></span></a>
             <a href="#versioning"><FiFileText aria-hidden="true" /><span>Check out our <b>changelog.</b></span></a>
             <a href="#authentication"><FiHelpCircle aria-hidden="true" /><span>Questions? <b>Contact Sales.</b></span></a>
-            <a href="#introduction"><HiOutlineSparkles aria-hidden="true" /><span>LLM? <b>Read llms.txt.</b></span></a>
+            <a href="#introduction"><StripeSparklesIcon /><span>LLM? <b>Read llms.txt.</b></span></a>
             <p>Powered by <a href="https://markdoc.dev/">Markdoc</a></p>
           </section>
           </>
@@ -2476,7 +2580,7 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
       {assistantOpen && (
         <aside className="assistant-panel" role="dialog" aria-modal="false" aria-label="Stripe assistant">
           <header>
-            <h2><HiOutlineSparkles aria-hidden="true" /> New chat</h2>
+            <h2><StripeSparklesIcon /> New chat</h2>
             <button type="button" aria-label="Close assistant" onClick={() => setAssistantOpen(false)}>
               <FiX aria-hidden="true" />
             </button>
@@ -2485,7 +2589,7 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
             Responses are generated using AI and may contain mistakes.
           </div>
           <div className="assistant-body">
-            <HiOutlineSparkles aria-hidden="true" />
+            <StripeSparklesIcon />
             <h3>Ask questions about Stripe and get help with your integration.</h3>
             <p>Tip: you can highlight any text to ask questions about it with <kbd>⌘ + I</kbd></p>
             <span>API Reference - {selectedResource?.name ?? sections.find((section) => section.id === activeId)?.label ?? "Introduction"}</span>
@@ -2519,7 +2623,7 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
             onMouseDown={(event) => event.stopPropagation()}
           >
             <div className="search-input-wrap">
-              <FiSearch aria-hidden="true" />
+              <StripeSearchIcon />
               <input
                 autoFocus
                 value={query}
