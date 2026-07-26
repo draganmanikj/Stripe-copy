@@ -351,6 +351,12 @@ kbd {
   color: var(--purple);
 }
 
+.category-nav .operation-nav-items button.operation-active {
+  background: rgba(83, 58, 253, 0.1);
+  color: var(--purple);
+  font-weight: 500;
+}
+
 .topbar {
   align-items: center;
   background: #ffffff;
@@ -606,16 +612,17 @@ kbd {
 
 .helpful {
   align-items: center;
-  color: #405874;
+  color: #50617a;
   display: flex;
   font-size: 14px;
-  gap: 10px;
+  font-weight: 500;
+  gap: 8px;
   line-height: 22px;
   margin: 34px 0 0;
 }
 
 .helpful strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .helpful button {
@@ -1050,13 +1057,14 @@ kbd {
   box-shadow: inset 0 1px 0 var(--line);
   margin: 0 auto;
   max-width: 1540px;
-  padding: 40px 56px;
+  padding: 39px 56px 40px;
   scroll-margin-top: var(--header-height);
 }
 
 .resource-overview {
   box-shadow: none;
   padding-bottom: 35px;
+  padding-top: 40px;
 }
 
 .resource-section + .resource-section {
@@ -1073,8 +1081,9 @@ kbd {
 }
 
 .resource-section-header .section-actions {
+  height: 16px;
   margin: 0;
-  min-height: 18px;
+  min-height: 16px;
 }
 
 .resource-section-grid {
@@ -1084,6 +1093,7 @@ kbd {
 }
 
 .resource-overview-copy {
+  align-self: start;
   padding-top: 0;
 }
 
@@ -1167,25 +1177,33 @@ kbd {
 
 .resource-index-column {
   min-width: 0;
-  padding-top: 10px;
 }
 
 .resource-index-tabs {
   border-bottom: 1px solid #d6e0ec;
   display: flex;
-  gap: 24px;
-  height: 32px;
+  gap: 0;
+  height: 25px;
+  margin-left: 8px;
 }
 
 .resource-index-tabs button {
+  align-items: center;
   background: transparent;
   border: 0;
   color: #536d8a;
   cursor: pointer;
+  display: flex;
   font-size: 12px;
   font-weight: 600;
-  padding: 0 0 8px;
+  height: 24px;
+  line-height: 16px;
+  padding: 4px 12px;
   position: relative;
+}
+
+.resource-index-tabs button:first-child {
+  margin-left: -12px;
 }
 
 .resource-index-tabs button.active {
@@ -1204,6 +1222,7 @@ kbd {
 
 .endpoint-index {
   display: grid;
+  padding: 8px;
 }
 
 .endpoint-index > a {
@@ -1220,7 +1239,9 @@ kbd {
   align-self: end;
   font-size: 14px;
   font-weight: 600;
-  line-height: 19px;
+  line-height: 20px;
+  position: relative;
+  top: -1px;
 }
 
 .endpoint-index > a > span {
@@ -1228,7 +1249,10 @@ kbd {
   display: flex;
   gap: 9px;
   grid-column: 1;
+  line-height: 16px;
   min-width: 0;
+  position: relative;
+  top: 1px;
 }
 
 .endpoint-index > a code {
@@ -1251,8 +1275,9 @@ kbd {
 
 .endpoint-method {
   font-family: var(--font-geist-mono), "SFMono-Regular", Consolas, monospace;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
+  line-height: 16px;
 }
 
 .event-index {
@@ -1279,15 +1304,15 @@ kbd {
 }
 
 .endpoint-get {
-  color: #006ee6;
+  color: #045ad0;
 }
 
 .endpoint-post {
-  color: #168203;
+  color: #217005;
 }
 
 .endpoint-delete {
-  color: #c93d4e;
+  color: #b13600;
 }
 
 .resource-object-copy > h3,
@@ -1299,7 +1324,8 @@ kbd {
 }
 
 .has-collapsible-object .resource-object-copy > h3 {
-  padding-bottom: 20px;
+  display: flex;
+  padding-top: 20px;
 }
 
 .has-expanded-object .resource-object-section .resource-attributes > .resource-attribute {
@@ -1313,23 +1339,25 @@ kbd {
 }
 
 .resource-attributes {
-  border-top: 1px solid #cad7e5;
+  border-top: 1px solid #d4dee9;
 }
 
 .resource-attribute {
-  border-bottom: 1px solid #cad7e5;
+  border-bottom: 1px solid #d4dee9;
   padding: 16px 0;
 }
 
-.resource-attribute > div {
+.resource-attribute > div:first-child {
   align-items: baseline;
+  box-sizing: border-box;
   display: flex;
   gap: 8px;
   min-height: 21px;
+  padding-top: 2px;
 }
 
 .resource-attribute > div > code {
-  color: #20364f;
+  color: #1a2c44;
   font-family: "Source Code Pro", Menlo, Monaco, monospace;
   font-size: 14px;
   font-weight: 700;
@@ -1337,7 +1365,7 @@ kbd {
 }
 
 .resource-attribute > div > .resource-field-type {
-  color: #687c92;
+  color: #50617a;
   font-size: 12px;
   line-height: 16px;
 }
@@ -1357,8 +1385,9 @@ kbd {
 }
 
 .resource-enum-values {
-  border: 1px solid #cbd7e5;
-  border-radius: 7px;
+  background: #ffffff;
+  border: 1px solid #d4dee9;
+  border-radius: 8px;
   display: block !important;
   margin-top: 16px;
   overflow: hidden;
@@ -1366,20 +1395,22 @@ kbd {
 }
 
 .resource-enum-values > strong {
-  background: #f4f7fa;
-  border-bottom: 1px solid #cbd7e5;
-  color: #536d8a;
+  background: #ffffff;
+  border-bottom: 1px solid #d4dee9;
+  border-radius: 8px 8px 0 0;
+  color: #1a2c44;
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
+  line-height: 16px;
   min-height: 33px;
   padding: 8px 12px;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .resource-enum-values > div {
-  border-bottom: 1px solid #d9e2ec;
-  min-height: 79.667px;
+  border-bottom: 1px solid #d4dee9;
+  min-height: 80px;
   padding: 12px;
 }
 
@@ -1395,17 +1426,21 @@ kbd {
 }
 
 .resource-enum-values > div > code {
-  background: #f2f5f9;
-  border: 1px solid #d7e0ea;
+  background: #f4f7fa;
+  border: 1px solid #d4dee9;
   border-radius: 4px;
-  display: inline-block;
-  font-size: 11px;
-  line-height: 19px;
-  padding: 1px 4px;
+  display: inline;
+  font-family: "Source Code Pro", Menlo, Monaco, monospace;
+  font-size: 11.9px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 2px 4px;
+  position: relative;
+  top: -2px;
 }
 
 .resource-enum-values > div > p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 22px;
   margin-top: 6px;
 }
@@ -1416,8 +1451,10 @@ kbd {
   border-top: 1px solid #d9e2ec;
   color: var(--purple);
   cursor: pointer;
-  font-size: 12px;
-  min-height: 34px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  min-height: 37px;
   padding: 8px 12px;
   text-align: left;
   width: 100%;
@@ -1667,6 +1704,10 @@ kbd {
   padding: 16px 0;
 }
 
+.resource-attributes.compact .resource-attribute > p {
+  margin-top: 7px;
+}
+
 .resource-attributes.compact .resource-attribute:has(.resource-child-attributes) {
   padding-bottom: 20px;
 }
@@ -1702,20 +1743,21 @@ kbd {
 }
 
 .operation-returns h3 {
-  border-bottom: 1px solid #cad7e5;
+  border-bottom: 0;
   color: #1a2c44;
   font-size: 16px;
   font-weight: 600;
   margin: 24px 0 16px;
-  padding-bottom: 20px;
+  padding: 20px 0 0;
 }
 
 .operation-returns p {
+  border-top: 1px solid #d4dee9;
   color: #1a2c44;
   font-size: 14px;
-  line-height: 1.58;
+  line-height: 22px;
   margin: 0;
-  padding-bottom: 14px;
+  padding: 14px 0 0;
 }
 
 .operation-errors {
@@ -1790,22 +1832,22 @@ kbd {
 .operation-kicker {
   align-items: center;
   display: flex;
-  gap: 10px;
-  margin: -3px 0 0;
-  transform: translateY(3px);
+  gap: 7.7px;
+  margin: 0;
+  transform: none;
 }
 
 .resource-operation-copy > h3 {
-  border-bottom: 1px solid #cad7e5;
+  border-bottom: 0;
   margin-bottom: 16px;
   margin-top: 24px;
-  padding-bottom: 20px;
+  padding: 20px 0 0;
 }
 
 .resource-v2 .resource-operation-copy > h3 {
   border-bottom: 0;
   margin-top: 18px;
-  padding-bottom: 0;
+  padding: 0;
 }
 
 .resource-v2 .operation-returns h3 {
@@ -1815,39 +1857,44 @@ kbd {
 }
 
 .resource-operation-copy .no-parameters {
+  border-top: 1px solid #d4dee9;
   color: #405874;
   font-size: 14px;
-  line-height: 22px;
+  line-height: 20px;
   margin: 0;
-  padding-bottom: 14px;
+  padding: 16px 0 0;
 }
 
 .operation-kicker > code {
-  color: #536c84;
-  font-family: var(--font-geist-mono), "SFMono-Regular", Consolas, monospace;
-  font-size: 12px;
+  color: #50617a;
+  font-family: "Source Code Pro", Menlo, Monaco, monospace;
+  font-size: 14px;
+  line-height: normal;
 }
 
 .method-badge {
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: 750;
-  padding: 3px 5px;
+  background: transparent;
+  border-radius: 0;
+  font-family: "Source Code Pro", Menlo, Monaco, monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0;
 }
 
 .method-get {
-  background: #e8f5ed;
-  color: #18794e;
+  background: transparent;
+  color: #045ad0;
 }
 
 .method-post {
-  background: #e8f0ff;
-  color: #3158b5;
+  background: transparent;
+  color: #217005;
 }
 
 .method-delete {
-  background: #ffecef;
-  color: #c13c50;
+  background: transparent;
+  color: #b13600;
 }
 
 .resource-object-card {

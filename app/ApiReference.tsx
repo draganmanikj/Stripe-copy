@@ -1891,7 +1891,6 @@ function ResourcePage({
             className="resource-section resource-operation"
             id={operationId}
             key={operation.name}
-            style={operationDisplay ? { minHeight: `${operationDisplay.height}px` } : undefined}
           >
             <ResourceSectionHeader
               title={operation.name}
@@ -1988,8 +1987,6 @@ function ResourcePage({
         .filter((operation) => !operations.some((item) => item.name === operation))
         .map((operation) => {
           const operationId = operationSlug(resource.id, operation);
-          const fallbackDisplay =
-            display?.sections[resource.operations.indexOf(operation) + 1];
           const isEventTypeReference = /event types|types of events/i.test(operation);
           return (
             <section
@@ -1998,7 +1995,6 @@ function ResourcePage({
               }`}
               id={operationId}
               key={operation}
-              style={fallbackDisplay ? { minHeight: `${fallbackDisplay.height}px` } : undefined}
             >
               <ResourceSectionHeader
                 title={operation}
@@ -2077,7 +2073,9 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
     const timer = window.setTimeout(() => {
       const resource = resourceFromCurrentHash();
       if (!resource) return;
+      const hash = window.location.hash.slice(1);
       setSelectedResourceId(resource.id);
+      setActiveId(hash || `resource-${resource.id}`);
       setOpenCategories({ [resource.category]: true });
     }, 0);
     return () => window.clearTimeout(timer);
@@ -2086,9 +2084,9 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
   useEffect(() => {
     if (!selectedResourceId) return;
     const scroller = document.querySelector<HTMLElement>(".sidebar-scroll");
-    const target = document.querySelector<HTMLElement>(
-      `[data-resource-id="${selectedResourceId}"]`,
-    );
+    const target =
+      document.querySelector<HTMLElement>(`[data-section-id="${activeId}"]`) ??
+      document.querySelector<HTMLElement>(`[data-resource-id="${selectedResourceId}"]`);
     if (!scroller || !target) return;
     const scrollerRect = scroller.getBoundingClientRect();
     const targetRect = target.getBoundingClientRect();
@@ -2103,7 +2101,7 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
         behavior: "smooth",
       });
     }
-  }, [selectedResourceId]);
+  }, [activeId, selectedResourceId]);
 
   function toggleCategory(category: string) {
     setOpenCategories((current) => ({ ...current, [category]: !current[category] }));
@@ -2117,26 +2115,43 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
     setVersionMenuOpen(false);
     setApiMenuOpen(false);
     const hash = operation ? operationSlug(resource.id, operation) : `resource-${resource.id}`;
+    setActiveId(hash);
     window.history.replaceState(null, "", `#${hash}`);
     window.setTimeout(() => document.getElementById(hash)?.scrollIntoView({ block: "start" }), 40);
   }
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveId(visible.target.id);
-      },
-      { rootMargin: "-18% 0px -60% 0px", threshold: [0.05, 0.25, 0.6] },
-    );
+    let frame = 0;
+    const updateActiveSection = () => {
+      frame = 0;
+      const nodes = selectedResourceId
+        ? Array.from(document.querySelectorAll<HTMLElement>(".resource-page .resource-section[id]"))
+        : sections
+            .map(({ id }) => document.getElementById(id))
+            .filter((node): node is HTMLElement => Boolean(node));
+      if (!nodes.length) return;
 
-    sections.forEach(({ id }) => {
-      const node = document.getElementById(id);
-      if (node) observer.observe(node);
-    });
-    return () => observer.disconnect();
+      const marker = 55 + 96;
+      let current = nodes[0];
+      for (const node of nodes) {
+        if (node.getBoundingClientRect().top <= marker) current = node;
+        else break;
+      }
+      setActiveId((value) => value === current.id ? value : current.id);
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    const timer = window.setTimeout(updateActiveSection, 0);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.clearTimeout(timer);
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, [selectedResourceId]);
 
   useEffect(() => {
@@ -2312,7 +2327,12 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
                     {resourcesByCategory(category).map((resource) => (
                       <div className="resource-nav-group" key={resource.id}>
                         <button
-                          className={selectedResource?.id === resource.id ? "resource-active" : ""}
+                          className={
+                            selectedResource?.id === resource.id &&
+                            activeId === `resource-${resource.id}`
+                              ? "resource-active"
+                              : ""
+                          }
                           data-resource-id={resource.id}
                           type="button"
                           onClick={() => selectResource(resource)}
@@ -2324,6 +2344,12 @@ export function ApiReference({ renderedCopy }: { renderedCopy: Record<string, Re
                           <div className="operation-nav-items">
                             {resource.operations.map((operation) => (
                               <button
+                                className={
+                                  activeId === operationSlug(resource.id, operation)
+                                    ? "operation-active"
+                                    : ""
+                                }
+                                data-section-id={operationSlug(resource.id, operation)}
                                 key={operation}
                                 type="button"
                                 onClick={() => selectResource(resource, operation)}
