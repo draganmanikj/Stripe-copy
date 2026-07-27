@@ -10,6 +10,7 @@ const eslintConfig = defineConfig([
     // Default ignores of eslint-config-next:
     ".next/**",
     ".output/**",
+    ".tmp-codex/**",
     ".vercel/**",
     ".vinext/**",
     "dist/**",

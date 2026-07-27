@@ -2265,6 +2265,14 @@ kbd {
 .standard-section .code-card:has(.language-options),
 .resource-operation .code-card:has(.language-options) {
   overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.standard-section:has(.language-options),
+.resource-operation:has(.language-options) {
+  position: relative;
+  z-index: 1;
 }
 
 .standard-section .code-card:has(.language-options) .code-card-header,
